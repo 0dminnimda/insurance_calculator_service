@@ -1,5 +1,10 @@
+from pydantic import BaseModel
 from tortoise import fields, models
 from tortoise.contrib.pydantic import pydantic_model_creator
+
+
+class Result(BaseModel):
+    message: str
 
 
 class Tariffs(models.Model):

@@ -10,33 +10,29 @@ from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 
 from .__metadata__ import __version__, module_name
-from .models import Tariffs
-
+from .models import Tariffs, Result
 
 logger = logging.getLogger(module_name)
 
-app = FastAPI(
-    title="Insurance calculator",
-    version=__version__
-)
+app = FastAPI(title="Insurance calculator", version=__version__)
 
 
-@app.get("/ping")
-async def ping() -> str:
+@app.get("/ping", response_model=Result)
+async def ping():
     logger.info("pong")
-    return "pong"
+    return Result(message="pong")
 
 
-@app.post("/set_tariffs")
+@app.put("/set_tariffs", response_model=Result)
 async def set_tariffs(tariffs: Dict[date, List[Dict[str, str]]]):
-    for date_str, tariff_list in tariffs.items():
+    for from_date, tariff_list in tariffs.items():
         for tariff in tariff_list:
             await Tariffs.create(
                 cargo_type=tariff["cargo_type"],
                 rate=tariff["rate"],
-                effective_from_date=date_str
+                effective_from_date=from_date,
             )
-    return {"message": "Tariffs added successfully"}
+    return Result(message="Tariffs added successfully")
 
 
 register_tortoise(
