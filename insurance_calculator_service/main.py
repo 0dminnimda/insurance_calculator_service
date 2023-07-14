@@ -54,7 +54,7 @@ parser.add_argument(
 parser.add_argument(
     "--dev-mode",
     action="store_true",
-    help="log into 'app.log' file instead of stdout",
+    help="turn on developer mode",
 )
 
 
