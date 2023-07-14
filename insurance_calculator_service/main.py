@@ -40,9 +40,7 @@ def prepare_for_dev(debugging: bool = DEBUGGING) -> None:
         options.RELOAD = True
 
 
-parser = argparse.ArgumentParser(
-    prog=module_name
-)
+parser = argparse.ArgumentParser(prog=module_name)
 parser.add_argument(
     "--host",
     default="localhost",
