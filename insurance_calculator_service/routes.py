@@ -6,11 +6,11 @@ import logging
 from datetime import date
 from typing import Dict, List
 
-from fastapi import FastAPI
-from tortoise.contrib.fastapi import register_tortoise
+from fastapi import FastAPI, HTTPException
+from tortoise.contrib.fastapi import HTTPNotFoundError, register_tortoise
 
 from .__metadata__ import __version__, module_name
-from .models import Tariffs, Result
+from .models import CargoIn_Pydantic, Tariffs, Result
 
 logger = logging.getLogger(module_name)
 
@@ -35,6 +35,20 @@ async def set_tariffs(tariffs: Dict[date, List[Dict[str, str]]]):
                 effective_from_date=from_date,
             )
     return Result(message="Tariffs added successfully")
+
+
+@app.get("/insurance_cost", response_model=Result, responses={404: {"model": HTTPNotFoundError}})
+async def insurance_cost(cargo: CargoIn_Pydantic):
+    tariff = (
+        await Tariffs.filter(
+            effective_from_date__lte=date.today(), cargo_type=cargo.type
+        )
+        .order_by("-effective_from_date")
+        .first()
+    )
+    if tariff is None:
+        raise HTTPException(status_code=404, detail="Tariff not found")
+    return Result(message=tariff.rate * cargo.price)
 
 
 register_tortoise(

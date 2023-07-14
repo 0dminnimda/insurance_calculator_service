@@ -15,3 +15,14 @@ class Tariffs(models.Model):
 
 
 Tariff_Pydantic = pydantic_model_creator(Tariffs, name="Tariff")
+
+
+class Cargo(models.Model):
+    type = fields.CharField(max_length=32)
+    price = fields.FloatField()
+
+    class Meta:
+        table = None
+
+
+CargoIn_Pydantic = pydantic_model_creator(Cargo, name="Cargo", exclude_readonly=True)
