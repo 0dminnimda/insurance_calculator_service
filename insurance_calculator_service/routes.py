@@ -25,6 +25,8 @@ async def ping():
 
 @app.put("/set_tariffs", response_model=Result)
 async def set_tariffs(tariffs: Dict[date, List[Dict[str, str]]]):
+    await Tariffs.all().delete()
+
     for from_date, tariff_list in tariffs.items():
         for tariff in tariff_list:
             await Tariffs.create(
