@@ -39,7 +39,7 @@ dynamic = ["version", "dependencies", "optional-dependencies"]
 insurance_calculator_service = ["py.typed"]
 
 [tool.setuptools.dynamic]
-version = {attr = "insurance_calculator_service.__version__"}
+version = {attr = "insurance_calculator_service.__metadata__.__version__"}
 dependencies = {file = "requirements/basic.txt"}
 
 [tool.setuptools.dynamic.optional-dependencies]
