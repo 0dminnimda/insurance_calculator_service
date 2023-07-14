@@ -8,9 +8,8 @@ from pathlib import Path
 
 import uvicorn
 
-# uvicorn requires absolute imports
-from insurance_calculator_service import logger, options
-from insurance_calculator_service.routes import app  # for uvicorn.run
+from . import logger, options
+from .__metadata__ import module_name
 
 
 def run(host: str = "localhost") -> None:
@@ -18,7 +17,7 @@ def run(host: str = "localhost") -> None:
 
     file = Path(__file__)
     uvicorn.run(
-        f"{file.stem}:app",
+        f"{module_name}:app",
         app_dir=str(file.parent.absolute()),
         host=host,
         port=80,
@@ -42,7 +41,7 @@ def prepare_for_dev(debugging: bool = DEBUGGING) -> None:
 
 
 parser = argparse.ArgumentParser(
-    prog="insurance_calculator_service"
+    prog=module_name
 )
 parser.add_argument(
     "--host",

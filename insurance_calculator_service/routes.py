@@ -42,7 +42,7 @@ async def set_tariffs(tariffs: Dict[date, List[Dict[str, str]]]):
 register_tortoise(
     app,
     db_url="sqlite://:memory:",
-    modules={"models": ["models"]},
+    modules={module_name: [f"{module_name}.models"]},
     generate_schemas=True,
     add_exception_handlers=True,
 )
