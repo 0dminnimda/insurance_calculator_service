@@ -22,3 +22,11 @@ You can even change some options
 ```bash
 python -m insurance_calculator_service --help
 ```
+
+## Debug
+
+To debug you'll need to install this app as python package. (Personally I'll recommend to use virtualenv)
+
+```bash
+pip install -e .
+```
