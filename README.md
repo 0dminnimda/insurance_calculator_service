@@ -30,3 +30,5 @@ To debug you'll need to install this app as python package. (Personally I'll rec
 ```bash
 pip install -e .
 ```
+
+Then just run the `__main__.py` file in the debug mode. It uses absolute imports to allow for that kind of behaviour.
