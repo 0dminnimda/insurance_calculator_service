@@ -10,7 +10,7 @@ from fastapi import FastAPI, HTTPException
 from tortoise.contrib.fastapi import HTTPNotFoundError, register_tortoise
 
 from .__metadata__ import __version__, module_name
-from .models import CargoIn_Pydantic, Result, Tariffs
+from .models import CargoIn_Pydantic, Result, Tariffs, TariffListItem_Pydantic
 from .options import DB_URL
 
 logger = logging.getLogger(module_name)
@@ -25,14 +25,14 @@ async def ping():
 
 
 @app.put("/set_tariffs", response_model=Result)
-async def set_tariffs(tariffs: Dict[date, List[Dict[str, str]]]):
+async def set_tariffs(tariffs: Dict[date, List[TariffListItem_Pydantic]]):
     await Tariffs.all().delete()
 
     for from_date, tariff_list in tariffs.items():
         for tariff in tariff_list:
             await Tariffs.create(
-                cargo_type=tariff["cargo_type"],
-                rate=tariff["rate"],
+                cargo_type=tariff.cargo_type,
+                rate=tariff.rate,
                 effective_from_date=from_date,
             )
     return Result(message="Tariffs added successfully")

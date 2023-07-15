@@ -14,7 +14,12 @@ class Tariffs(models.Model):
     rate = fields.FloatField()
 
 
-Tariff_Pydantic = pydantic_model_creator(Tariffs, name="Tariff")
+TariffListItem_Pydantic = pydantic_model_creator(
+    Tariffs,
+    name="TariffListItem",
+    exclude=("effective_from_date",),
+    exclude_readonly=True,
+)
 
 
 class Cargo(models.Model):
