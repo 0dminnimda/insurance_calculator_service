@@ -11,6 +11,7 @@ from tortoise.contrib.fastapi import HTTPNotFoundError, register_tortoise
 
 from .__metadata__ import __version__, module_name
 from .models import CargoIn_Pydantic, Result, Tariffs
+from .options import DB_URL
 
 logger = logging.getLogger(module_name)
 
@@ -57,7 +58,7 @@ async def insurance_cost(cargo: CargoIn_Pydantic):
 
 register_tortoise(
     app,
-    db_url="sqlite://:memory:",
+    db_url=DB_URL,
     modules={module_name: [f"{module_name}.models"]},
     generate_schemas=True,
     add_exception_handlers=True,
