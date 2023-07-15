@@ -45,6 +45,7 @@ dependencies = {file = "requirements/basic.txt"}
 [tool.setuptools.dynamic.optional-dependencies]
 # docs = {file = "requirements/docs.txt"}
 test = {file = "requirements/test.txt"}
+fmt = {file = "requirements/fmt.txt"}
 
 # python -m mypy --config-file pyproject.toml
 [tool.mypy]

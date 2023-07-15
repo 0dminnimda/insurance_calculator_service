@@ -60,3 +60,13 @@ And then run pytest
 ```bash
 python -m pytest
 ```
+
+## Formatting
+
+Code is formatter using [black](https://github.com/psf/black)
+
+You can get it along with this project by running
+
+```bash
+pip install -e .[fmt]
+```
