@@ -4,6 +4,7 @@ Logging configs and utils
 
 from copy import deepcopy
 from pathlib import Path
+from typing import Dict
 
 import uvicorn
 
@@ -17,7 +18,7 @@ def log_section_separator() -> None:
         LOGFILE.open(mode="a", encoding="utf-8").write("\n")
 
 
-def file_logging_handler(formatter: str) -> dict[str, str]:
+def file_logging_handler(formatter: str) -> Dict[str, str]:
     return {
         "formatter": formatter,
         "filename": str(LOGFILE),
@@ -25,7 +26,7 @@ def file_logging_handler(formatter: str) -> dict[str, str]:
     }
 
 
-def stdout_logging_handler(formatter: str) -> dict[str, str]:
+def stdout_logging_handler(formatter: str) -> Dict[str, str]:
     return {
         "formatter": formatter,
         "stream": "ext://sys.stdout",
