@@ -26,7 +26,7 @@ jobs:
       - name: Install package and dependencies
         run: |
           pip install --upgrade pip setuptools wheel --user
-          pip install .[test, fmt]
+          pip install .[test,fmt]
 
       - name: Check the code formatting with black
         run: black --check insurance_calculator_service tests
