@@ -1,4 +1,4 @@
 pytest
 asgi_lifespan
-httpx
+httpx~=0.24.0
 pyright
