@@ -23,6 +23,10 @@ You can even change some options
 python -m insurance_calculator_service --help
 ```
 
+Now when you lanched the app just go to the host, by default http://localhost:80.
+
+To see what things are possible and play around go to http://localhost:80/docs
+
 ## Debug
 
 To debug you'll need to install this app as python package. (Personally I'll recommend to use virtualenv)
