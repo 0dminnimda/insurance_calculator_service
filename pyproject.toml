@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "insurance_calculator_service"
 description = "Insurance calculator service"
 readme = "README.md"
-requires-python = ">=3.7,<=3.11"
+requires-python = ">=3.7,<3.12"
 license = {text = "MIT"}
 authors = [
     {name = "0dminnimda", email = "0dminnimda.contact@gmail.com"},
