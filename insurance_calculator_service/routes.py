@@ -10,7 +10,7 @@ from fastapi import FastAPI, HTTPException
 from tortoise.contrib.fastapi import HTTPNotFoundError, register_tortoise
 
 from .__metadata__ import __version__, module_name
-from .models import CargoIn_Pydantic, Tariffs, Result
+from .models import CargoIn_Pydantic, Result, Tariffs
 
 logger = logging.getLogger(module_name)
 
@@ -37,7 +37,11 @@ async def set_tariffs(tariffs: Dict[date, List[Dict[str, str]]]):
     return Result(message="Tariffs added successfully")
 
 
-@app.post("/insurance_cost", response_model=Result, responses={404: {"model": HTTPNotFoundError}})
+@app.post(
+    "/insurance_cost",
+    response_model=Result,
+    responses={404: {"model": HTTPNotFoundError}},
+)
 async def insurance_cost(cargo: CargoIn_Pydantic):
     tariff = (
         await Tariffs.filter(
