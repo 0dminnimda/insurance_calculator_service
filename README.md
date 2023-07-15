@@ -1,4 +1,16 @@
-# Insurance calculator service
+<h1 align="center">Insurance calculator service</h1>
+
+<p align="center">
+    <a href="https://github.com/0dminnimda/insurance_calculator_service/blob/main/LICENSE">
+        <img alt="GitHub" src="https://img.shields.io/github/license/0dminnimda/insurance_calculator_service">
+    </a>
+    <a href="https://pypi.org/project/insurance_calculator_service/">
+        <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/insurance_calculator_service">
+    </a>
+    <a href="https://github.com/0dminnimda/insurance_calculator_service/actions/workflows/ci.yml">
+        <img alt="CI" src="https://github.com/0dminnimda/insurance_calculator_service/actions/workflows/ci.yml/badge.svg">
+    </a>
+</p>
 
 This repo implements this [task](/TASK.md)
 

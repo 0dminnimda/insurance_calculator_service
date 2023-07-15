@@ -1,3 +1,4 @@
 pytest
 asgi_lifespan
 httpx
+pyright

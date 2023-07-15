@@ -53,3 +53,8 @@ python_version = "3.7"
 ignore_missing_imports = true
 check_untyped_defs = true
 files = ["insurance_calculator_service", "tests"]
+
+[tool.pyright]
+reportMissingTypeStubs = false
+pythonVersion = "3.7"
+include = ["insurance_calculator_service/**/*.py", "tests/**/*.py"]
