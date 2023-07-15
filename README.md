@@ -36,3 +36,11 @@ pip install -e .
 ```
 
 Then just run the `__main__.py` file in the debug mode. It uses absolute imports to allow for that kind of behaviour.
+
+## Docker
+
+If you would like to use docker, just run
+
+```bash
+docker-compose up -d
+```
