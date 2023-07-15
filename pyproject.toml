@@ -44,11 +44,11 @@ dependencies = {file = "requirements/basic.txt"}
 
 [tool.setuptools.dynamic.optional-dependencies]
 # docs = {file = "requirements/docs.txt"}
-# test = {file = "requirements/test.txt"}
+test = {file = "requirements/test.txt"}
 
 # python -m mypy --config-file pyproject.toml
 [tool.mypy]
 python_version = "3.7"
 ignore_missing_imports = true
 check_untyped_defs = true
-files = ["insurance_calculator_service"]  #, "tests"]
+files = ["insurance_calculator_service", "tests"]

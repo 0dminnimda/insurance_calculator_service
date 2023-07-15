@@ -44,3 +44,19 @@ If you would like to use docker, just run
 ```bash
 docker-compose up -d
 ```
+
+## Tests
+
+All tests are located at [`tests`](/tests) folder.
+
+To run tests you need to first install the package prepared for testing
+
+```bash
+pip install -e .[test]
+```
+
+And then run pytest
+
+```bash
+python -m pytest
+```
