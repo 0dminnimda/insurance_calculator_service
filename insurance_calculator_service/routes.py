@@ -37,7 +37,7 @@ async def set_tariffs(tariffs: Dict[date, List[Dict[str, str]]]):
     return Result(message="Tariffs added successfully")
 
 
-@app.get("/insurance_cost", response_model=Result, responses={404: {"model": HTTPNotFoundError}})
+@app.post("/insurance_cost", response_model=Result, responses={404: {"model": HTTPNotFoundError}})
 async def insurance_cost(cargo: CargoIn_Pydantic):
     tariff = (
         await Tariffs.filter(
