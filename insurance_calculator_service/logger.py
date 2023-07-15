@@ -40,7 +40,9 @@ def redirect_handler_to_file(config: dict, handler: str) -> None:
     )
 
 
-STDOUT_CONFIG: dict = deepcopy(uvicorn.config.LOGGING_CONFIG)
+STDOUT_CONFIG: dict = deepcopy(
+    uvicorn.config.LOGGING_CONFIG  # type: ignore[attr-defined]
+)
 FILE_CONFIG: dict = deepcopy(STDOUT_CONFIG)
 
 for handler in FILE_CONFIG["handlers"].keys():

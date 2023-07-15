@@ -5,7 +5,6 @@ Things that simplify the testing process and help with it
 from __future__ import annotations
 
 import random
-from typing import Iterator
 
 import pytest
 from asgi_lifespan import LifespanManager
@@ -23,7 +22,7 @@ def setup():
 
 
 @pytest.fixture()
-async def client() -> Iterator[AsyncClient]:
+async def client():
     async with LifespanManager(app):
         async with AsyncClient(app=app, base_url="http://test") as c:
             yield c
