@@ -1,5 +1,5 @@
 pydantic==1.8.2
-fastapi==0.78.0
+fastapi==0.109.1
 uvicorn[standard]==0.17.6
 aiosqlite==0.17.0
 tortoise-orm[asyncpg]==0.19.3
